@@ -36,7 +36,7 @@ class MadlibsApp extends React.Component {
         	return (<div> 
         			<Logout setLogin={this.setLogin.bind(this)}/>
         			<MadlibsEditor refreshStories={this.refreshStories.bind(this)} />
-        			<RenderedLibs stories={this.state.stories} />
+        			<RenderedLibs stories={this.state.stories} refreshStories={this.refreshStories.bind(this)} /	>
         		   </div>)
         };
     }

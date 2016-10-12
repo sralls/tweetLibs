@@ -8,9 +8,8 @@ class RenderedLibs extends React.Component {
 
   render() {
     return (<div>
-    			<p> Info pulled from database goes here(for users)!</p>
                 <div>
-                	{this.props.stories.map(story => <Story key={story._id} story={story}/>)}
+                	{this.props.stories.map(story => <Story key={story._id} story={story} refreshStories={this.props.refreshStories} />)}
                 </div>
     		</div>)
   }
@@ -18,8 +17,15 @@ class RenderedLibs extends React.Component {
  
 
 class Story extends React.Component {
+	deleteMadlib() {
+		request('/api/story/' + this.props.story._id, 'DELETE', {}, 
+		response => this.props.refreshStories())
+
+	}
+
     render() {
-        return <div>{this.props.story.sentence}</div>;
+        return (<div>{this.props.story.sentence}
+        <button onClick={this.deleteMadlib.bind(this)}>X</button></div>);
     }
 }
 

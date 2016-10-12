@@ -9,8 +9,10 @@ var request = requests.request
 class MadlibsEditor extends React.Component {
 
 	addMadlib() {
-		request('/api/story', 'POST', {
-			sentence: this.state.sentence},
+		request('/api/story', 'POST', 
+			{
+				sentence: this.state.sentence
+			},
 			response => this.props.refreshStories())
 		}
 

@@ -42,6 +42,15 @@ module.exports = function(app, passport) {
             res.json(stories)
         })
     })
+
+    app.delete('/api/story/:storyId', function(req, res){
+        var storyId = req.params.storyId; 
+        Story.findOne({_id: storyId}, function(err, story){
+            story.remove(function(err, deleteStory){
+                res.json(deleteStory)
+            })
+        })
+    })
 };
 
 // route middleware to make sure a user is logged in
