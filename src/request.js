@@ -2,13 +2,13 @@ function request(url, method, body, callback){
 	var http = new XMLHttpRequest();
 	http.open(method, url, true);
 	//Send the proper header information along with the request
-	http.setRequestHeader("Content-type", "text/json");
+	http.setRequestHeader("Content-type", "application/json");
 	http.onreadystatechange = function() {//Call a function when the state changes.
 	    if(http.readyState == 4 && http.status == 200) {
 	        callback(JSON.parse(http.responseText));
 	    }
 	}
-	http.send(body);
+	http.send(JSON.stringify(body));
 }
 
 function formRequest(url, method, body, callback){

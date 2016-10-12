@@ -30,6 +30,7 @@ module.exports = function(app, passport) {
     })
 
     app.post('/api/story', function(req, res){
+        console.log("This is req body ", req.body)
         new Story({sentence: req.body.sentence})
         .save(function(err,data){
             res.json(data)

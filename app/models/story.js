@@ -8,3 +8,6 @@ var storySchema = mongoose.Schema({
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Story', storySchema);
+/*"Sometimes a " + nounOne + " is " + verbOne +" in " + nounTwo + "." 
+
+use a method to place each variable*/
