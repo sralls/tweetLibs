@@ -6,7 +6,7 @@ import MadlibsEditor from './madlibsEditor.jsx'
 class World extends React.Component {
   render() {
     return (<div>
-    			<h1>World!</h1>
+    			<h1>Welcome to Mad Lib World!</h1>
     			<Login>
     				<MadlibsEditor/>
     			</Login>

@@ -1,3 +1,5 @@
+var Story = require("./models/story")
+
 module.exports = function(app, passport) {
 
     // LOGIN ===============================
@@ -25,6 +27,19 @@ module.exports = function(app, passport) {
         } else {
             res.json({loggedIn: false})
         }
+    })
+
+    app.post('/api/story', function(req, res){
+        new Story({sentence: req.body.sentence})
+        .save(function(err,data){
+            res.json(data)
+        })
+    })
+
+    app.get('/api/story', function(req, res){
+        Story.find(function(err,stories){
+            res.json(stories)
+        })
     })
 };
 
