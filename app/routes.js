@@ -1,5 +1,5 @@
 var Story = require("./models/story")
-
+var sendTweet = require('./utilities/twitterUtility.js').sendTweet
 module.exports = function(app, passport) {
 
     // LOGIN ===============================
@@ -10,6 +10,17 @@ module.exports = function(app, passport) {
         failureRedirect : '/api/user', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+
+    app.post('/api/sendTweet', function(req, res){
+        sendTweet({status: req.body.status}, function(error){
+            res.status(500)
+            res.json({message: 'tweet failed'})
+        },
+        function(data){
+            res.json(data)
+        })
+    })
+
 
 
     // =====================================

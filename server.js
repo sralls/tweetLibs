@@ -8,6 +8,10 @@ var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var Twitter = require('twitter-node-client').Twitter;
+var Stream = require('user-stream');
+var twitterConfig = require('./data/twitter_config.js');
+var twitterHandler =  require('./app/twitter/twitter.js');
 var webpack  = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 var webpackMiddleware = require('webpack-dev-middleware');
@@ -36,6 +40,11 @@ configPassport(passport);
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
+console.log(twitterConfig)
+var stream = new Stream(twitterConfig);
+stream.stream();
+twitterHandler(stream)
+
 
 // require('./config/passport')(passport); // pass passport for configuration
 
