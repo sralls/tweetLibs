@@ -51,6 +51,12 @@ module.exports = function(app, passport) {
             })
         })
     })
+
+    app.get('/api/story/random', function(req, res){
+        Story.getRandomStory(function(err, story){
+            res.json(story);
+        });
+    })
 };
 
 // route middleware to make sure a user is logged in
