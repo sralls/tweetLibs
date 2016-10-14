@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    app.post('/api/sendTweet', function(req, res){
+    app.post('/api/sendTweet', function(req, res){ 
         sendTweet({status: req.body.status}, function(error){
             res.status(500)
             res.json({message: 'tweet failed'})
@@ -20,8 +20,6 @@ module.exports = function(app, passport) {
             res.json(data)
         })
     })
-
-
 
     // =====================================
     // LOGOUT ==============================
